@@ -405,6 +405,6 @@ SESエンジニアとして改修担当になりたての頃の自分が、こ�
 ---
 
 ## 画面遷移図
-https://www.figma.com/design/I4hw6jXHypjp71TvWb5uX7/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3_Unstuck?node-id=0-1&p=f&t=bB53L4PE6DsaKCgh-0
+https://www.figma.com/design/I4hw6jXHypjp71TvWb5uX7/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3_Unstuck?m=auto&t=YTxbHeklOMMo6iyh-1
 
 *このREADMEは開発中に随時更新予定です。*
