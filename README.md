@@ -408,6 +408,6 @@ SESエンジニアとして改修担当になりたての頃の自分が、こ�
 https://www.figma.com/design/I4hw6jXHypjp71TvWb5uX7/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3_Unstuck?m=auto&t=YTxbHeklOMMo6iyh-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/3177744087991c4f758201656916e175.png)](https://gyazo.com/3177744087991c4f758201656916e175)
+[![Image from Gyazo](https://i.gyazo.com/c129475c21c5e827c326f6b20bf58e6a.png)](https://gyazo.com/c129475c21c5e827c326f6b20bf58e6a)
 
 *このREADMEは開発中に随時更新予定です。*
