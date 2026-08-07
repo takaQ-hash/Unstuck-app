@@ -14,3 +14,7 @@ RUN mkdir /unstuck
 WORKDIR /unstuck
 RUN gem install bundler
 COPY . /unstuck
+RUN chmod +x bin/docker-entrypoint
+ENTRYPOINT ["bin/docker-entrypoint"]
+EXPOSE 3000
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
