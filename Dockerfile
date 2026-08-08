@@ -14,6 +14,7 @@ RUN mkdir /unstuck
 WORKDIR /unstuck
 RUN gem install bundler
 COPY . /unstuck
+RUN bundle install
 RUN chmod +x bin/docker-entrypoint
 ENTRYPOINT ["bin/docker-entrypoint"]
 EXPOSE 3000
