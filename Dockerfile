@@ -16,7 +16,8 @@ RUN gem install bundler
 COPY . /unstuck
 RUN bundle install
 RUN yarn install --frozen-lockfile
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+RUN yarn build
+RUN yarn build:css
 RUN chmod +x bin/docker-entrypoint
 ENTRYPOINT ["bin/docker-entrypoint"]
 EXPOSE 3000

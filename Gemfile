@@ -19,6 +19,7 @@ gem "devise"
 # フロントエンド
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "tailwindcss-rails"
 
 # 日本語対応
 gem "rails-i18n", "~> 7.0.0"
