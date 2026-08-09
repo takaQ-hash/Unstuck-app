@@ -1,0 +1,21 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold text-center mb-8">タスク一覧</h1>
+
+  <div class="space-y-4">
+    <% if @tasks.present? %>
+      <%= render @tasks %>
+    <% else %>
+      <p class="text-center text-gray-500">タスクがありません</p>
+    <% end %>
+  </div>
+
+  <div class="flex justify-end mt-8">
+    <%= link_to "タスク登録", "#", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  </div>
+</div>
+
+<footer class="mt-12 py-4 border-t text-center text-sm text-gray-500 flex justify-center gap-8">
+  <span>利用規約</span>
+  <span>プライバシーポリシー</span>
+  <span>お問い合わせ</span>
+</footer>

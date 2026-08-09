@@ -1,0 +1,16 @@
+<div id="task-id-<%= task.id %>" class="border rounded p-4 bg-gray-50">
+  <div class="flex justify-between items-start">
+    <div>
+      <h2 class="font-bold text-lg">◆<%= task.name %></h2>
+      <p class="text-sm text-gray-600">締切日：<%= task.deadline %></p>
+      <p class="text-sm mt-1">
+        最新のステータス：<span class="text-red-500">奮闘中</span>
+      </p>
+    </div>
+    <div class="flex flex-col gap-1">
+      <%= link_to "編集", "#", class: "border px-3 py-1 text-sm rounded text-center" %>
+      <%= link_to "詳細", "#", class: "border px-3 py-1 text-sm rounded text-center" %>
+      <%= link_to "報告", "#", class: "border px-3 py-1 text-sm rounded text-center" %>
+    </div>
+  </div>
+</div>
