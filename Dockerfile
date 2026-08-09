@@ -15,6 +15,9 @@ WORKDIR /unstuck
 RUN gem install bundler
 COPY . /unstuck
 RUN bundle install
+RUN yarn install --frozen-lockfile
+RUN yarn build
+RUN yarn build:css
 RUN chmod +x bin/docker-entrypoint
 ENTRYPOINT ["bin/docker-entrypoint"]
 EXPOSE 3000
