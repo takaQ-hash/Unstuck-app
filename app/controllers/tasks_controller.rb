@@ -29,9 +29,8 @@ class TasksController < ApplicationController
       flash.now[:danger] = "タスクの更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
-  
   end
-  
+
   private
 
   def task_params
