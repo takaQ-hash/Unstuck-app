@@ -7,6 +7,10 @@ class TasksController < ApplicationController
     @task = Task.new(notification_type: :interval)
   end
 
+  def show
+     @task = current_user.tasks.find(params[:id])
+  end
+
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
