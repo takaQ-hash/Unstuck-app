@@ -7,38 +7,6 @@
   <p><%= @task.deadline %></p>
 </div>
 
-<%= form_with model: @report, url: task_reports_path(@task) do |f| %>
-  <%= hidden_field_tag :back_path, @back_path %>
-  
-  <% if @report.errors.any? %>
-    <div class="text-red-600 mb-4">
-      <ul>
-        <% @report.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render "form", report: @report, url: task_reports_path(@task, back_path: @back_path) %>
 
-  <div class="mb-4">
-    <p class="font-bold mb-2">進捗ステータス</p>
-    <label class="mr-4">
-      <%= f.radio_button :status, "in_progress" %>
-      進行中
-    </label>
-    <label>
-      <%= f.radio_button :status, "struggling" %>
-      奮闘中
-    </label>
-  </div>
-
-  <div class="mb-4">
-    <%= f.label :memo, "一言メモ", class: "block font-bold mb-1" %>
-    <%= f.text_area :memo, class: "border rounded w-full p-2", rows: 4 %>
-  </div>
-
-  <div class="flex gap-2">
-    <%= link_to "戻る", @back_path, class: "border px-3 py-1 text-sm rounded" %>
-    <%= f.submit "報告", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
-  </div>
-<% end %>
+<%= link_to "戻る", @back_path, class: "border px-3 py-1 text-sm rounded" %>

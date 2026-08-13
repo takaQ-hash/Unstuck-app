@@ -18,6 +18,21 @@ class ReportsController < ApplicationController
     end
   end
 
+  def edit
+    @report = @task.reports.find(params[:id])
+  end
+
+  def update
+    @report = @task.reports.find(params[:id])
+    if @report.update(report_params)
+      redirect_to task_path(@task), notice: "報告内容を更新しました"
+    else
+      flash.now[:danger] = "報告内容の更新に失敗しました"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
   private
 
   def set_task

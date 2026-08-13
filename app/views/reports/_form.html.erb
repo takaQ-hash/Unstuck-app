@@ -1,0 +1,30 @@
+<%= form_with model: report, url: url do |f| %>
+  <% if report.errors.any? %>
+    <div class="text-red-600 mb-4">
+      <ul>
+        <% report.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <p class="font-bold mb-2">進捗ステータス</p>
+    <label class="mr-4">
+      <%= f.radio_button :status, "in_progress" %>
+      進行中
+    </label>
+    <label>
+      <%= f.radio_button :status, "struggling" %>
+      奮闘中
+    </label>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :memo, "一言メモ", class: "block font-bold mb-1" %>
+    <%= f.text_area :memo, class: "border rounded w-full p-2", rows: 4 %>
+  </div>
+
+  <%= f.submit report.persisted? ? "修正" : "報告", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+<% end %>
