@@ -8,7 +8,8 @@ class TasksController < ApplicationController
   end
 
   def show
-     @task = current_user.tasks.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
+    @reports = @task.reports.order(created_at: :desc)
   end
 
   def create

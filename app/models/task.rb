@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
+    has_many :reports, dependent: :destroy
 
   enum notification_type: { interval: 0, fixed_time: 1 }
 

@@ -18,8 +18,12 @@
 <div class="border-t pt-4">
   <div class="flex justify-between items-center mb-2">
     <p class="font-bold">報告履歴一覧</p>
-    <%= link_to "報告", "#", class: "border px-3 py-1 text-sm rounded" %>
+    <%= link_to "報告", new_task_report_path(@task), class: "border px-3 py-1 text-sm rounded" %>
   </div>
 
-  <p class="text-gray-500 text-sm">まだ報告がありません</p>
+  <% if @reports.present? %>
+    <%= render @reports %>
+  <% else %>
+    <p class="text-gray-500 text-sm">まだ報告がありません</p>
+  <% end %>
 </div>

@@ -14,7 +14,7 @@
     <div class="flex flex-col gap-1">
       <%= link_to "編集", edit_task_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
       <%= link_to "詳細", task_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
-      <%= link_to "報告", "#", class: "border px-3 py-1 text-sm rounded text-center" %>
+      <%= link_to "報告", new_task_report_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
     </div>
   </div>
 </div>
