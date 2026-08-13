@@ -32,6 +32,12 @@ class ReportsController < ApplicationController
     end
   end
 
+  def destroy
+    report =  @task.reports.find(params[:id])
+    report.destroy!
+    redirect_to task_path(@task),  notice: "報告を削除しました"
+  end
+
 
   private
 
