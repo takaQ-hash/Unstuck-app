@@ -10,6 +10,10 @@ class Task < ApplicationRecord
   validates :notification_value, presence: true
   validate :notification_value_format
 
+  def latest_report
+    reports.max_by(&:created_at)
+  end
+
   private
 
   def notification_value_format
