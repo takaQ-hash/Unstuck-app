@@ -1,6 +1,6 @@
 <%= form_with model: report, url: url do |f| %>
   <% if report.errors.any? %>
-    <div class="text-red-600 mb-4">
+    <div class="text-red-600 mb-6 text-sm">
       <ul>
         <% report.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -9,8 +9,8 @@
     </div>
   <% end %>
 
-  <div class="mb-4">
-    <p class="font-bold mb-2">進捗ステータス</p>
+  <div class="mb-6">
+    <p class="font-bold mb-3 text-brand-900">進捗ステータス</p>
     <label class="mr-4">
       <%= f.radio_button :status, "in_progress" %>
       進行中
@@ -21,10 +21,12 @@
     </label>
   </div>
 
-  <div class="mb-4">
-    <%= f.label :memo, "一言メモ", class: "block font-bold mb-1" %>
-    <%= f.text_area :memo, class: "border rounded w-full p-2", rows: 4 %>
+  <div class="mb-8">
+    <%= f.label :memo, "一言メモ", class: "block font-bold mb-2 text-brand-900" %>
+    <%= f.text_area :memo, class: "border border-brand-100 rounded-xl w-full p-2 focus:border-brand-500 focus:outline-none", rows: 4 %>
   </div>
 
-  <%= f.submit report.persisted? ? "修正" : "報告", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  <div class="flex justify-center">
+    <%= f.submit report.persisted? ? "修正" : "報告", class: "bg-accent-500 hover:bg-accent-900 text-white px-6 py-2 text-sm font-bold rounded-full" %>
+  </div>
 <% end %>

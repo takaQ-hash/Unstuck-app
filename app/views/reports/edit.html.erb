@@ -1,7 +1,11 @@
-<h1 class="text-xl font-bold mb-4">報告編集</h1>
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+  <h1 class="font-heading text-3xl font-bold text-center mb-8 text-brand-900">報告編集</h1>
 
-<%= render "task_summary", task: @task %>
+  <%= render "shared/task_summary", task: @task %>
 
-<%= render "form", report: @report, url: task_report_path(@task, @report) %>
+  <%= render "form", report: @report, url: task_report_path(@task, @report) %>
 
-<%= link_to "戻る", task_path(@task), class: "border px-3 py-1 text-sm rounded" %>
+  <div class="flex justify-center mt-4">
+    <%= link_to "戻る", task_path(@task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
+  </div>
+</div>
