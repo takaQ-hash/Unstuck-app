@@ -1,11 +1,6 @@
 <h1 class="text-xl font-bold mb-4">報告登録</h1>
 
-<div class="border rounded p-4 bg-gray-50 mb-4">
-  <p class="font-bold">タスク名</p>
-  <p class="mb-2"><%= @task.name %></p>
-  <p class="font-bold">締切日</p>
-  <p><%= @task.deadline %></p>
-</div>
+<%= render "task_summary", task: @task %>
 
 <%= render "form", report: @report, url: task_reports_path(@task, back_path: @back_path) %>
 
