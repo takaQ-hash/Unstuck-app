@@ -1,2 +1,3 @@
 <h1 class="text-xl font-bold mb-4">タスク登録</h1>
-<%= render "form", task: @task %>
+<%= render "form", task: @task, url: tasks_path(back_path: @back_path)%>
+<%= link_to "戻る", @back_path, class: "border px-3 py-1 text-sm rounded" %>
