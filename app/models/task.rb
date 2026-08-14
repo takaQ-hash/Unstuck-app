@@ -2,13 +2,17 @@ class Task < ApplicationRecord
   belongs_to :user
     has_many :reports, dependent: :destroy
 
-  enum notification_type: { interval: 0, fixed_time: 1 }
+  enum :notification_type, { interval: 0, fixed_time: 1 }
 
   validates :name, presence: true
   validates :deadline, presence: true
   validates :notification_type, presence: true
   validates :notification_value, presence: true
   validate :notification_value_format
+
+  def latest_report
+    reports.max_by(&:created_at)
+  end
 
   private
 

@@ -3,13 +3,18 @@
     <div>
       <h2 class="font-bold text-lg">◆<%= task.name %></h2>
       <p class="text-sm text-gray-600">締切日：<%= task.deadline %></p>
-      <% dummy_status = "in_progress"  %>
-      <p class="text-sm mt-1">
-        最新のステータス：
-        <span class="<%= dummy_status == "in_progress" ? "text-green-600 font-bold" : "text-red-600 font-bold" %>">
-          <%= dummy_status == "in_progress" ? "進行中" : "奮闘中" %>
-        </span>
-      </p>
+      <% latest_report = task.latest_report %>
+      <% if latest_report %>
+        <p class="text-sm mt-1">
+          最新のステータス：
+          <span class="<%= latest_report.in_progress? ? "text-green-600 font-bold" : "text-red-600 font-bold" %>">
+            <%= latest_report.in_progress? ? "進行中" : "奮闘中" %>
+          </span>
+          <span class="text-gray-500 text-xs"> 
+            (<%= latest_report.created_at.strftime("%-m/%-d %H:%M") %>)
+          </span>
+        </p>
+      <% end %>
     </div>
     <div class="flex flex-col gap-1">
       <%= link_to "編集", edit_task_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
