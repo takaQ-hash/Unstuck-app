@@ -1,24 +1,24 @@
-<div class="flex justify-end p-4 border-b">
-  <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-sm text-gray-600 hover:underline" %>
+<div class="flex justify-end p-4 border-b border-brand-100">
+  <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-sm text-brand-900 hover:underline" %>
 </div>
 
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-2xl font-bold text-center mb-8">タスク一覧</h1>
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+  <h1 class="font-heading text-3xl font-bold text-center mb-8 text-brand-900">タスク一覧</h1>
 
   <div class="space-y-4">
     <% if @tasks.present? %>
       <%= render @tasks %>
     <% else %>
-      <p class="text-center text-gray-500">タスクがありません</p>
+      <p class="text-center text-brand-600">まだタスクがありません。最初のタスクを登録してみましょう。</p>
     <% end %>
   </div>
 
   <div class="flex justify-end mt-8">
-    <%= link_to "タスク登録", new_task_path, class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+    <%= link_to "タスク登録", new_task_path, class: "bg-brand-600 hover:bg-brand-900 text-white px-4 py-2 rounded-full" %>
   </div>
 </div>
 
-<footer class="mt-12 py-4 border-t text-center text-sm text-gray-500 flex justify-center gap-8">
+<footer class="mt-12 py-4 border-t border-brand-100 text-center text-sm text-brand-600 flex justify-center gap-8">
   <span>利用規約</span>
   <span>プライバシーポリシー</span>
   <span>お問い合わせ</span>
