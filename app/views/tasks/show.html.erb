@@ -12,13 +12,14 @@
 
   <div class="border-t border-brand-100 pt-4">
     <p class="font-bold text-brand-900">報告履歴一覧</p><br>
-    <div class="flex justify-left mb-4">
-      <%= link_to "報告する", new_task_report_path(@task), class: "bg-accent-500 hover:bg-accent-900 text-white px-6 py-2 text-sm font-bold rounded-full" %>
-    </div>  
     <% if @reports.present? %>
       <%= render @reports %>
     <% else %>
-      <p class="text-brand-600 text-sm">まだ報告がありません。最初の報告を記録してみましょう。</p>
+      <p class="text-center text-brand-600 text-sm">まだ報告がありません。最初の報告を記録してみましょう。</p>
     <% end %>
+    <br>
+    <div class="flex justify-center mb-4">
+      <%= link_to "報告する", new_task_report_path(@task), class: "bg-accent-500 hover:bg-accent-900 text-white px-6 py-2 text-sm font-bold rounded-full" %>
+    </div>  
   </div>
 </div>
