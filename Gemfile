@@ -5,7 +5,7 @@ ruby "3.3.7"
 
 gem "rails", "~> 7.2.0"
 gem "pg", "~> 1.1"
-gem "puma", "~> 6.0"
+gem "puma", "~> 8.0"
 gem "sprockets-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
