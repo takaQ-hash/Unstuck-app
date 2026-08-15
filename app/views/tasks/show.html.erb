@@ -1,4 +1,8 @@
 <div class="container mx-auto px-4 py-8 max-w-2xl">
+  <%= render "shared/breadcrumb", items: [
+    { label: "タスク一覧", path: tasks_path },
+    { label: "タスク詳細", path: nil }
+  ] %>
   <h1 class="font-heading text-3xl font-bold text-center mb-8 text-brand-900">タスク詳細</h1>
 
   <%= render "shared/task_summary", task: @task %>
