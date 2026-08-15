@@ -3,9 +3,5 @@
 
   <%= render "shared/task_summary", task: @task %>
 
-  <%= render "form", report: @report, url: task_report_path(@task, @report) %>
-
-  <div class="flex justify-center mt-4">
-    <%= link_to "戻る", task_path(@task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
-  </div>
+  <%= render "form", report: @report, url: task_report_path(@task, @report), back_path: task_path(@task) %>
 </div>

@@ -26,7 +26,8 @@
     <%= f.text_area :memo, class: "border border-brand-100 rounded-xl w-full p-2 focus:border-brand-500 focus:outline-none", rows: 4 %>
   </div>
 
-  <div class="flex justify-center">
-    <%= f.submit report.persisted? ? "修正" : "報告", class: "bg-accent-500 hover:bg-accent-900 text-white px-6 py-2 text-sm font-bold rounded-full" %>
+  <div class="flex justify-center items-center gap-4">
+     <%= link_to "戻る", back_path, class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
+    <%= f.submit report.persisted? ? "更新" : "報告", class: "bg-accent-500 hover:bg-accent-900 text-white px-6 py-2 text-sm font-bold rounded-full" %>
   </div>
 <% end %>
