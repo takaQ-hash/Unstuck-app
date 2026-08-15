@@ -40,6 +40,10 @@
         <%= text_field_tag nil, nil, data: { notification_type_target: "valueInput", action: "input->notification-type#syncIntervalValue" }, class: "border border-brand-100 rounded-xl p-2 focus:border-brand-500 focus:outline-none" %>
         <span class="text-sm text-brand-900">分毎</span>
       </div>
+      <div data-notification-type-target="intervalHint" class="text-xs text-gray-400 mt-3">
+        <p>※タスク登録時刻からタイマーがスタートします。</p>
+        <p>　例）12:00に登録した場合、30分間隔なら最初の通知は12:30です。</p>
+      </div>
 
       <div data-notification-type-target="fixedTimeGroup" class="hidden flex items-center gap-2">
         <select data-notification-type-target="hourSelect" data-action="change->notification-type#combineTime" class="border border-brand-100 rounded-xl p-2 focus:border-brand-500 focus:outline-none">

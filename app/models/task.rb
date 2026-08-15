@@ -14,6 +14,21 @@ class Task < ApplicationRecord
     reports.max_by(&:created_at)
   end
 
+  def notification_due?
+    return false unless notification_type.present? && notification_value.present?
+
+    if interval?
+      minutes = notification_value.to_i
+      return false if minutes <= 0
+
+      elapsed_minutes = ((Time.current - created_at) / 60).to_i
+      elapsed_minutes.positive? && elapsed_minutes % minutes == 0
+    elsif fixed_time?
+      current_hm = Time.current.strftime("%H:%M")
+      current_hm == notification_value
+    end
+  end
+
   private
 
   def notification_value_format
