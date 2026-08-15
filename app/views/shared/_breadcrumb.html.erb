@@ -1,0 +1,10 @@
+<nav class="border-b border-brand-100 pb-2 mb-6 text-sm text-brand-600 inline-block">
+  <% items.each_with_index do |item, index| %>
+    <% if index == items.size - 1 %>
+      <span class="text-brand-900 font-bold"><%= item[:label] %></span>
+    <% else %>
+      <%= link_to item[:label], item[:path], class: "hover:underline" %>
+      <span class="mx-1 text-brand-100">></span>
+    <% end %>
+  <% end %>
+</nav>
