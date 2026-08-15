@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+      report: 報告
+      user: ユーザー
+    attributes:
+      task:
+        name: タスク名
+        deadline: 締切日
+        notification_type: 通知タイミング設定
+        notification_value: 通知タイミング
+      report:
+        status: 進捗ステータス
+        memo: 一言メモ
+      user:
+        name: お名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
