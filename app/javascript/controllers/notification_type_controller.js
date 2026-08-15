@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [
     "valueInput", "intervalLabel", "fixedTimeLabel",
-    "intervalGroup", "fixedTimeGroup",
+    "intervalGroup", "fixedTimeGroup", "intervalHint",
     "hourSelect", "minuteSelect", "hiddenValueInput"
   ]
 
@@ -39,12 +39,14 @@ export default class extends Controller {
       this.fixedTimeLabelTarget.classList.remove("hidden")
       this.intervalGroupTarget.classList.add("hidden")
       this.fixedTimeGroupTarget.classList.remove("hidden")
+      this.intervalHintTarget.classList.add("hidden")
       this.combineTime()
     } else {
       this.intervalLabelTarget.classList.remove("hidden")
       this.fixedTimeLabelTarget.classList.add("hidden")
       this.intervalGroupTarget.classList.remove("hidden")
       this.fixedTimeGroupTarget.classList.add("hidden")
+      this.intervalHintTarget.classList.remove("hidden")
     }
   }
 
