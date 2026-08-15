@@ -1,7 +1,7 @@
 <%# app/views/tasks/_form.html.erb %>
 <%= form_with model: task, url: url, data: { controller: "notification-type" } do |f| %>
   <% if task.errors.any? %>
-    <div class="text-red-600 mb-4">
+    <div class="text-red-600 mb-6 text-sm">
       <ul>
         <% task.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -10,34 +10,56 @@
     </div>
   <% end %>
 
-  <div class="mb-4">
-    <%= f.label :name, "タスク名", class: "block font-bold mb-1" %>
-    <%= f.text_field :name, class: "border rounded w-full p-2" %>
+  <div class="mb-6">
+    <%= f.label :name, "タスク名", class: "block font-bold mb-2 text-brand-900" %>
+    <%= f.text_field :name, class: "border border-brand-100 rounded-xl w-full p-2 focus:border-brand-500 focus:outline-none" %>
   </div>
 
-  <div class="mb-4">
-    <%= f.label :deadline, "締切日", class: "block font-bold mb-1" %>
-    <%= f.date_field :deadline, class: "border rounded p-2" %>
+  <div class="mb-6">
+    <%= f.label :deadline, "締切日", class: "block font-bold mb-2 text-brand-900" %>
+    <%= f.date_field :deadline, class: "border border-brand-100 rounded-xl p-2 focus:border-brand-500 focus:outline-none" %>
   </div>
 
-  <div class="mb-4">
-    <p class="font-bold mb-2">通知タイミング設定</p>
+  <div class="mb-8">
+    <p class="font-bold mb-3 text-brand-900">通知タイミング設定</p>
+    <div class="mb-3">
+      <label class="mr-4">
+        <%= f.radio_button :notification_type, "interval", checked: task.notification_type.nil? || task.notification_type == "interval", data: { action: "change->notification-type#toggle" } %>
+        時間間隔
+      </label>
+      <label>
+        <%= f.radio_button :notification_type, "fixed_time", data: { action: "change->notification-type#toggle" } %>
+        固定時間
+      </label>
+    </div>
+    <div>
+      <span data-notification-type-target="intervalLabel" class="text-sm text-gray-400 block mb-1">通知時間間隔（半角数字）</span>
+      <span data-notification-type-target="fixedTimeLabel" class="hidden text-sm text-gray-400 block mb-1">通知時刻</span>
 
-    <label class="mr-4">
-      <%= f.radio_button :notification_type, "interval", checked: task.notification_type.nil? || task.notification_type == "interval", data: { action: "change->notification-type#toggle" } %>
-      時間間隔
-    </label>
-    <label>
-      <%= f.radio_button :notification_type, "fixed_time", data: { action: "change->notification-type#toggle" } %>
-      固定時間
-    </label>
+      <div data-notification-type-target="intervalGroup" class="flex items-center gap-2">
+        <%= text_field_tag nil, nil, data: { notification_type_target: "valueInput", action: "input->notification-type#syncIntervalValue" }, class: "border border-brand-100 rounded-xl p-2 focus:border-brand-500 focus:outline-none" %>
+        <span class="text-sm text-brand-900">分毎</span>
+      </div>
 
-    <div class="mt-2">
-      <span data-notification-type-target="intervalLabel">通知時間間隔（何分ごと）</span>
-      <span data-notification-type-target="fixedTimeLabel" class="hidden">通知時刻（HH:MM）</span>
-      <%= f.text_field :notification_value, data: { notification_type_target: "valueInput" }, class: "border rounded p-2" %>
+      <div data-notification-type-target="fixedTimeGroup" class="hidden flex items-center gap-2">
+        <select data-notification-type-target="hourSelect" data-action="change->notification-type#combineTime" class="border border-brand-100 rounded-xl p-2 focus:border-brand-500 focus:outline-none">
+          <% (0..23).each do |h| %>
+            <option value="<%= format("%02d", h) %>"><%= format("%02d", h) %></option>
+          <% end %>
+        </select>
+        <span class="text-brand-900">:</span>
+        <select data-notification-type-target="minuteSelect" data-action="change->notification-type#combineTime" class="border border-brand-100 rounded-xl p-2 focus:border-brand-500 focus:outline-none">
+          <% (0..59).each do |m| %>
+            <option value="<%= format("%02d", m) %>"><%= format("%02d", m) %></option>
+          <% end %>
+        </select>
+      </div>
+      <%= f.hidden_field :notification_value, data: { notification_type_target: "hiddenValueInput" } %>
     </div>
   </div>
-
-  <%= f.submit task.persisted? ? "更新" : "登録", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  
+  <div class="flex justify-center items-center gap-4">
+    <%= link_to "戻る", @back_path, class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
+    <%= f.submit task.persisted? ? "更新" : "登録", class: "bg-brand-600 hover:bg-brand-900 text-white px-6 py-2 text-sm font-bold rounded-full" %>
+  </div>
 <% end %>

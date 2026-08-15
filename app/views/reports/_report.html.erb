@@ -1,19 +1,30 @@
-<div id="report-id-<%= report.id %>" class="border rounded p-4 bg-gray-50 mb-2">
-  <div class="flex justify-between items-start">
-    <div>
-      <p class="text-sm text-gray-600"><%= report.created_at.strftime("%-m/%-d %H:%M") %></p>
-      <p class="text-sm mt-1">
-        <span class="<%= report.in_progress? ? "text-green-600 font-bold" : "text-red-600 font-bold" %>">
+<div id="report-id-<%= report.id %>" class="border border-brand-100 rounded-2xl p-4 bg-white mb-3">
+  <div class="flex justify-between items-center gap-4">
+    <div class="flex-1 space-y-2">
+      <p class="text-sm">
+        <span class="text-gray-400">報告日時：</span>
+        <span class="text-brand-900"><%= report.created_at.strftime("%-m/%-d %H:%M") %></span>
+      </p>
+
+      <p class="text-sm flex items-center gap-2">
+        <span class="text-gray-400">ステータス：</span>
+        <span class="<%= report.in_progress? ? "bg-brand-100 text-brand-900" : "bg-accent-100 text-accent-900" %> font-bold px-3 py-1 rounded-full text-xs">
           <%= report.in_progress? ? "進行中" : "奮闘中" %>
         </span>
       </p>
-      <p class="text-sm mt-1"><%= report.memo %></p>
+
+      <% if report.memo.present? %>
+        <p class="text-sm">
+          <span class="text-gray-400">一言メモ：</span>
+          <span class="text-brand-900"><%= report.memo %></span>
+        </p>
+      <% end %>
     </div>
     <div class="flex flex-col gap-1">
-      <%= link_to "編集", edit_task_report_path(report.task, report), class: "border px-3 py-1 text-sm rounded text-center" %>
+      <%= link_to "編集", edit_task_report_path(report.task, report), class: "border border-brand-600 text-brand-900 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
       <%= button_to "削除", task_report_path(report.task, report), method: :delete,
             data: { turbo_confirm: "この報告を削除しますか？" },
-            class: "border px-3 py-1 text-sm rounded text-center bg-red-500 text-white" %>
+            class: "px-3 py-1 text-sm rounded-full text-center bg-red-500 hover:bg-red-700 text-white border border-red-700" %>
     </div>
   </div>
 </div>

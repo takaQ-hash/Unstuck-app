@@ -1,25 +1,25 @@
-<div id="task-id-<%= task.id %>" class="border rounded p-4 bg-gray-50">
+<div id="task-id-<%= task.id %>" class="border border-brand-100 rounded-2xl p-4 bg-white">
   <div class="flex justify-between items-start">
     <div>
-      <h2 class="font-bold text-lg">◆<%= task.name %></h2>
-      <p class="text-sm text-gray-600">締切日：<%= task.deadline %></p>
+      <h2 class="font-bold text-lg text-brand-900">◆<%= task.name %></h2>
+      <p class="text-sm text-brand-600">締切日：<%= task.deadline %></p>
       <% latest_report = task.latest_report %>
       <% if latest_report %>
         <p class="text-sm mt-1">
           最新のステータス：
-          <span class="<%= latest_report.in_progress? ? "text-green-600 font-bold" : "text-red-600 font-bold" %>">
+          <span class="<%= latest_report.in_progress? ? "bg-brand-100 text-brand-900" : "bg-accent-100 text-accent-900" %> font-bold px-2 py-0.5 rounded-full text-xs">
             <%= latest_report.in_progress? ? "進行中" : "奮闘中" %>
           </span>
-          <span class="text-gray-500 text-xs"> 
+          <span class="text-brand-600 text-xs">
             (<%= latest_report.created_at.strftime("%-m/%-d %H:%M") %>)
           </span>
         </p>
       <% end %>
     </div>
     <div class="flex flex-col gap-1">
-      <%= link_to "編集", edit_task_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
-      <%= link_to "詳細", task_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
-      <%= link_to "報告", new_task_report_path(task), class: "border px-3 py-1 text-sm rounded text-center" %>
+      <%= link_to "編集", edit_task_path(task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
+      <%= link_to "詳細", task_path(task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
+      <%= link_to "報告", new_task_report_path(task), class: "bg-accent-500 hover:bg-accent-900 text-white px-3 py-1 text-sm rounded-full text-center" %>
     </div>
   </div>
 </div>
