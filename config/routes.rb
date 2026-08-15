@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :reports, only: %i[new create edit update destroy]
   end
 
+  get "notifications/due_tasks", to: "notifications#due_tasks"
+
   # Defines the root path route ("/")
   root "tasks#index"
 end
