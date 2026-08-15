@@ -20,9 +20,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@400;500;700;900&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body class="bg-white">
+    <header class="bg-brand-600 text-white px-4 py-3 flex justify-between items-center">
+      <span class="font-heading font-bold text-lg">Unstuck</span>
+      <% if user_signed_in? %>
+        <div class="flex items-center gap-4 text-sm">
+          <%= link_to "タスク一覧", tasks_path, class: "hover:underline" %>
+          <%= link_to "アカウント編集", edit_user_registration_path, class: "hover:underline" %>
+          <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "hover:underline bg-transparent border-none text-white text-sm cursor-pointer p-0" %>
+        </div>
+      <% end %>
+    </header>
+
+    <main>
+      <% if notice.present? %>
+        <p class="notice text-center text-brand-900 mt-4 text-sm"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert text-center text-red-600 mt-4 text-sm"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+
+    <footer class="mt-12 py-4 border-t border-brand-100 text-center text-sm text-brand-600 flex justify-center gap-8">
+      <%= link_to "利用規約", "#" %>
+      <%= link_to "プライバシーポリシー", "#" %>
+      <%= link_to "お問い合わせ", "#" %>
+    </footer>
   </body>
 </html>
