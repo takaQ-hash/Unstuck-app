@@ -1,0 +1,48 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="stemGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B6D11"/>
+      <stop offset="100%" stop-color="#BA7517"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M190,158 C240,130 260,186 300,158" fill="none" stroke="url(#stemGrad)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="222" cy="140" r="5" fill="#639922"/>
+  <circle cx="270" cy="176" r="5" fill="#639922"/>
+
+  <path d="M300,158 C340,120 380,100 415,90" fill="none" stroke="#BA7517" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M300,158 C350,158 390,158 415,158" fill="none" stroke="#BA7517" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M300,158 C340,196 380,216 415,226" fill="none" stroke="#BA7517" stroke-width="2.5" stroke-linecap="round"/>
+
+  <g>
+    <circle cx="405" cy="80" r="7" fill="#FAC775"/>
+    <circle cx="415" cy="74" r="7" fill="#EF9F27"/>
+    <circle cx="425" cy="80" r="7" fill="#FAC775"/>
+    <circle cx="415" cy="90" r="7" fill="#EF9F27"/>
+  </g>
+  <g>
+    <circle cx="405" cy="148" r="7" fill="#FAC775"/>
+    <circle cx="415" cy="142" r="7" fill="#EF9F27"/>
+    <circle cx="425" cy="148" r="7" fill="#FAC775"/>
+    <circle cx="415" cy="158" r="7" fill="#EF9F27"/>
+  </g>
+  <g>
+    <circle cx="405" cy="216" r="7" fill="#FAC775"/>
+    <circle cx="415" cy="210" r="7" fill="#EF9F27"/>
+    <circle cx="425" cy="216" r="7" fill="#FAC775"/>
+    <circle cx="415" cy="226" r="7" fill="#EF9F27"/>
+  </g>
+
+  <g>
+    <rect x="30" y="130" width="160" height="56" rx="16" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+    <text x="110" y="150" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#173404">① タスク登録</text>
+    <text x="110" y="170" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#3B6D11">タスクを一つずつ記録</text>
+  </g>
+
+  <g>
+    <rect x="490" y="122" width="160" height="80" rx="16" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+    <text x="570" y="142" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#412402">② 報告登録</text>
+    <text x="570" y="162" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#854F0B">決まった時間に</text>
+    <text x="570" y="182" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#854F0B">タスクごとの進捗を報告</text>
+  </g>
+</svg>

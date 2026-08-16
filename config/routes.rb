@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   get "notifications/due_tasks", to: "notifications#due_tasks"
+  get "guide", to: "guide#index"
 
   # Defines the root path route ("/")
   root "tasks#index"
