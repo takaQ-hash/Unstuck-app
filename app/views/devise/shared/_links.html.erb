@@ -7,7 +7,7 @@
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <p><%= link_to "パスワードをお忘れですか？", new_password_path(resource_name) %></p>
+  <%# メール送信機能未実装のため一時非表示。実装後にlink_to "パスワードをお忘れですか？", new_password_path(resource_name) を再設定する %>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
