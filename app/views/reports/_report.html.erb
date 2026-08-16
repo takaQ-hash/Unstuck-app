@@ -1,4 +1,4 @@
-<div id="report-id-<%= report.id %>" class="border border-brand-100 rounded-2xl p-4 bg-white mb-3">
+<div id="report-id-<%= report.id %>" class="border border-accent-100 border-l-4 border-l-accent-500 rounded-2xl p-4 bg-white mb-3">
   <div class="flex justify-between items-center gap-4">
     <div class="flex-1 space-y-2">
       <p class="text-sm">
@@ -21,10 +21,10 @@
       <% end %>
     </div>
     <div class="flex flex-col gap-1">
-      <%= link_to "編集", edit_task_report_path(report.task, report), class: "border border-brand-600 text-brand-900 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
+      <%= link_to "編集", edit_task_report_path(report.task, report), class: "border border-accent-500 text-accent-900 px-3 py-1 text-sm rounded-full text-center hover:bg-accent-100" %>
       <%= button_to "削除", task_report_path(report.task, report), method: :delete,
-            data: { turbo_confirm: "この報告を削除しますか？" },
-            class: "px-3 py-1 text-sm rounded-full text-center bg-red-500 hover:bg-red-700 text-white border border-red-700" %>
+        data: { turbo_confirm: "この報告を削除しますか？" },
+        class: "px-3 py-1 text-sm rounded-full text-center bg-danger-500 hover:bg-danger-700 text-white border border-danger-700" %>
     </div>
   </div>
 </div>

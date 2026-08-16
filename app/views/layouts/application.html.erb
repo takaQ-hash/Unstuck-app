@@ -25,9 +25,14 @@
       <span class="font-heading font-bold text-lg">Unstuck</span>
       <% if user_signed_in? %>
         <div class="flex items-center gap-4 text-sm">
+          <%= link_to "使い方", guide_path, class: "hover:underline" %>
+          <span class="text-brand-100">|</span>
           <%= link_to "タスク一覧", tasks_path, class: "hover:underline" %>
-          <%= link_to "アカウント編集", edit_user_registration_path, class: "hover:underline" %>
-          <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "hover:underline bg-transparent border-none text-white text-sm cursor-pointer p-0" %>
+          <span class="text-brand-100">|</span>
+          <div class="flex items-center gap-4">
+            <%= link_to "アカウント編集", edit_user_registration_path, class: "hover:underline" %>
+            <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "hover:underline bg-transparent border-none text-white text-sm cursor-pointer p-0" %>
+          </div>
         </div>
       <% end %>
     </header>

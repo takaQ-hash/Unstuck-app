@@ -1,4 +1,4 @@
-<div id="task-id-<%= task.id %>" class="border border-brand-100 rounded-2xl p-4 bg-white">
+<div id="task-id-<%= task.id %>" class="border border-brand-100 border-l-4 border-l-brand-500 rounded-2xl p-4 bg-white">
   <div class="flex justify-between items-start">
     <div>
       <h2 class="font-bold text-lg text-brand-900">◆<%= task.name %></h2>
@@ -17,9 +17,9 @@
       <% end %>
     </div>
     <div class="flex flex-col gap-1">
-      <%= link_to "編集", edit_task_path(task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
-      <%= link_to "詳細", task_path(task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-50" %>
-      <%= link_to "報告", new_task_report_path(task), class: "bg-accent-500 hover:bg-accent-900 text-white px-3 py-1 text-sm rounded-full text-center" %>
+      <%= link_to "編集", edit_task_path(task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-100" %>
+      <%= link_to "詳細", task_path(task), class: "border border-brand-100 px-3 py-1 text-sm rounded-full text-center hover:bg-brand-100" %>
+      <%= link_to "報告", new_task_report_path(task), class: "bg-accent-500 hover:bg-accent-700 text-white px-3 py-1 text-sm rounded-full text-center" %>
     </div>
   </div>
 </div>

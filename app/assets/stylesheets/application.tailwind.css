@@ -11,7 +11,13 @@
 
   --color-accent-100: #FAC775;
   --color-accent-500: #EF9F27;
+  --color-accent-700: #c97a10;
   --color-accent-900: #412402;
+
+  --color-danger-100: #f5d6cd;
+  --color-danger-500: #c14f3d;
+  --color-danger-600: #a33e2d;
+  --color-danger-700: #863223;
 
   --font-heading: "Zen Maru Gothic", sans-serif;
   --font-body: "M PLUS Rounded 1c", sans-serif;
