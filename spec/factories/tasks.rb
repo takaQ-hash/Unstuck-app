@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :task do
-    user { nil }
-    name { "MyString" }
+    sequence(:name) { |n| "task_#{n}" }
     deadline { "2026-08-08" }
-    notification_type { 1 }
-    notification_value { "MyString" }
+    notification_type { :interval }
+    notification_value { "120" }
+    association :user
   end
 end

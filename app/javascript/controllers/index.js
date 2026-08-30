@@ -12,3 +12,6 @@ application.register("notification-checker", NotificationCheckerController)
 
 import NotificationTypeController from "./notification_type_controller"
 application.register("notification-type", NotificationTypeController)
+
+import RegistrationController from "./registration_controller"
+application.register("registration", RegistrationController)
