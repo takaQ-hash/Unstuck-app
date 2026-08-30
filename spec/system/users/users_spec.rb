@@ -41,7 +41,7 @@ RSpec.describe 'Users', type: :system do
   end
 
   describe '新規登録' do
-    context '入力情報が正しい場合' do
+    context '入力項目が正しく、チェックボックスにチェックがある場合' do
       it 'ユーザーが新規作成できること' do
         visit new_user_registration_path
         expect {
@@ -57,11 +57,23 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
+    context '入力項目が正しく、チェックボックスにチェックがない場合' do
+      it '登録ボタンが非活性であること' do
+        visit new_user_registration_path
+        fill_in 'お名前', with: 'テスト太郎'
+        fill_in 'メールアドレス', with: 'example@example.com'
+        fill_in 'パスワード', with: 'MyString'
+        fill_in 'パスワード（確認用）', with: 'MyString'
+        expect(page).to have_button('登録する', disabled: true)
+      end
+    end
+
     context '入力情報に不備がある場合' do
       it 'ユーザーが新規作成できないこと' do
         visit new_user_registration_path
         expect {
           fill_in 'メールアドレス', with: 'example@example.com'
+          check '利用規約・プライバシーポリシーに同意する'
           click_button '登録する'
         }.not_to change(User, :count)
         expect(page).to have_content('名前を入力してください')
@@ -78,6 +90,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'メールアドレス', with: existing_user.email
           fill_in 'パスワード', with: 'MyString'
           fill_in 'パスワード（確認用）', with: 'MyString'
+          check '利用規約・プライバシーポリシーに同意する'
           click_button '登録する'
         }.not_to change(User, :count)
         expect(page).to have_content('メールアドレスはすでに存在します')
