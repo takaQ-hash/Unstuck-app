@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :reports, only: %i[new create edit update destroy]
   end
 
+  resources :push_subscriptions, only: %i[create]
+
   get "notifications/due_tasks", to: "notifications#due_tasks"
   get "guide", to: "guide#index"
   get "terms", to: "pages#terms"
