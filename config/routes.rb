@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :push_subscriptions, only: %i[create]
 
-  get "notifications/due_tasks", to: "notifications#due_tasks"
   post "notifications/send_push", to: "notifications#send_push"
   get "guide", to: "guide#index"
   get "terms", to: "pages#terms"
