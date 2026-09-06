@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Unstuck" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="vapid-public-key" content="<%= Rails.application.credentials.vapid[:public_key] %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -20,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@400;500;700;900&display=swap" rel="stylesheet">
   </head>
 
-  <body class="bg-white" data-controller="<%= 'notification-checker' if user_signed_in? %>" >
+  <body class="bg-white" data-controller="<%= 'notification-checker' if user_signed_in? %>">
     <header class="bg-brand-600 text-white px-4 py-3 flex justify-between items-center">
       <span class="font-heading font-bold text-lg">Unstuck</span>
       <% if user_signed_in? %>

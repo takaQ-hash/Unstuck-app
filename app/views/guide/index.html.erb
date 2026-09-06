@@ -1,8 +1,8 @@
 <div class="container mx-auto px-4 py-8 max-w-2xl">
-  <h1 class="font-heading text-3xl font-bold text-center mb-8 text-brand-900">✿このアプリの使い方✿</h1>
+  <h1 class="font-heading text-3xl font-bold text-center mb-8 text-brand-900">このアプリの使い方</h1>
 
   <dev class="font-body text-center text-brand-900 mb-6">
-    <p>Unstuckは、自分のペースで続けられるタスク管理ツールです。</p>
+    <p>Unstuckは、自分のペースで続けられる報連相サポートツールです。</p>
     <p>必要な作業は、タスク登録と進捗報告のたった2ステップです。</p>
   </dev>
 
@@ -12,4 +12,26 @@
     <p>タスクを登録すると、設定したタイミングで報告リマインド通知が届きます。</p>
     <p>届いたら、その時々の進捗を報告として記録していきましょう。</p>
   </dev>
+</div>
+
+<div class="mt-12 p-6 border border-brand-100 rounded-2xl bg-brand-50 text-center" data-controller="push-notification">
+  <h2 class="font-heading text-xl font-bold text-brand-900 mb-3">報告リマインド通知を受け取る</h2>
+  <p class="text-sm text-brand-900 mb-4">
+    通知を有効にすると、各タスクで設定した時間に「報告してください」というお知らせが、ブラウザを閉じていても届くようになります。ブラウザから「通知を許可しますか？」と聞かれたら、「許可」を選んでください。
+  </p>
+
+  <p data-push-notification-target="statusText" class="text-sm font-bold text-brand-900 bg-brand-100 inline-block px-4 py-2 rounded-full mb-4"></p>
+
+  <div>
+  <button data-push-notification-target="enableButton" data-action="click->push-notification#enable" class="bg-brand-600 hover:bg-brand-900 disabled:bg-gray-300 disabled:hover:bg-gray-300 disabled:cursor-not-allowed text-white px-6 py-2 text-sm font-bold rounded-full">
+      通知を有効にする
+    </button>
+  </div>
+
+  <div class="text-left inline-block mt-4">
+    <p class="text-xs text-brand-600">
+      ※ 一度「ブロック」を選んだ場合、このボタンからは再設定できません。ブラウザのアドレスバー左側のアイコンから、サイトの設定を開き、「通知」の項目を「許可」に変更してください。<br>
+      ※ 通知が不要になった場合も、同じ場所から「ブロック」に変更することでオフにできます。
+    </p>
+  </div>
 </div>

@@ -15,3 +15,6 @@ application.register("notification-type", NotificationTypeController)
 
 import RegistrationController from "./registration_controller"
 application.register("registration", RegistrationController)
+
+import PushNotificationController from "./push_notification_controller"
+application.register("push-notification", PushNotificationController)
