@@ -24,6 +24,9 @@ gem "stimulus-rails"
 gem "rails-i18n", "~> 7.0.0"
 gem "devise-i18n"
 
+# Web Push通知
+gem "web-push"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry-byebug"
@@ -35,7 +38,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "rspec_junit_formatter"
   gem "letter_opener_web"
-  gem "web-push"
 end
 
 group :development do
