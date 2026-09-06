@@ -1,12 +1,34 @@
+// app/javascript/controllers/push_notification_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = ["enableButton", "statusText"]
+
   connect() {
-    this.registerServiceWorker()
+    this.updateStatus()
   }
 
-  async registerServiceWorker() {
+  updateStatus() {
+    if (!("Notification" in window)) {
+      this.statusTextTarget.textContent = "このブラウザは通知に対応していません"
+      this.enableButtonTarget.disabled = true
+      return
+    }
+
+    if (Notification.permission === "granted") {
+      this.statusTextTarget.textContent = "通知は有効になっています"
+      this.enableButtonTarget.classList.add("hidden")
+    } else if (Notification.permission === "denied") {
+      this.statusTextTarget.textContent = "通知がブロックされています。ブラウザの設定から変更してください"
+      this.enableButtonTarget.disabled = true
+    } else {
+      this.statusTextTarget.textContent = "通知はまだ有効になっていません"
+    }
+  }
+
+  async enable() {
     if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+      this.statusTextTarget.textContent = "このブラウザはPush通知に対応していません"
       console.log("このブラウザはPush通知に対応していません")
       return
     }
@@ -15,6 +37,7 @@ export default class extends Controller {
       const registration = await navigator.serviceWorker.register("/service-worker.js")
       console.log("Service Worker登録完了", registration)
       await this.subscribeToPush(registration)
+      this.updateStatus()
     } catch (error) {
       console.error("Service Workerの登録に失敗しました", error)
     }
@@ -36,6 +59,7 @@ export default class extends Controller {
       applicationServerKey: convertedKey,
     })
     console.log("購読情報を作成しました:", subscription)
+
     await this.sendSubscriptionToServer(subscription)
     console.log("購読情報をサーバーに送信しました")
   }
