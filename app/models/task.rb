@@ -10,6 +10,8 @@ class Task < ApplicationRecord
   validates :notification_value, presence: true
   validate :notification_value_format
 
+  before_save :reset_last_notified_at, if: :notification_settings_changed?
+
   def latest_report
     reports.max_by(&:created_at)
   end
@@ -18,14 +20,16 @@ class Task < ApplicationRecord
     return false unless notification_type.present? && notification_value.present?
 
     if interval?
-      minutes = notification_value.to_i
-      return false if minutes <= 0
+      interval_minutes = notification_value.to_i
+      return false if interval_minutes <= 0
+      return false if created_at > interval_minutes.minutes.ago
 
-      elapsed_minutes = ((Time.current - created_at) / 60).to_i
-      elapsed_minutes.positive? && elapsed_minutes % minutes == 0
+      last_notified_at.nil? || last_notified_at <= interval_minutes.minutes.ago
     elsif fixed_time?
       current_hm = Time.current.strftime("%H:%M")
-      current_hm == notification_value
+      return false unless current_hm == notification_value
+
+      last_notified_at.nil? || last_notified_at < Time.current.beginning_of_day
     end
   end
 
@@ -45,9 +49,20 @@ class Task < ApplicationRecord
     rescue ::WebPush::ExpiredSubscription
       subscription.destroy
     end
+    update!(last_notified_at: Time.current)
   end
 
   private
+
+  def notification_settings_changed?
+    return false if new_record?
+
+    notification_type_changed? || notification_value_changed?
+  end
+
+  def reset_last_notified_at
+    self.last_notified_at = nil
+  end
 
   def notification_value_format
     return if notification_value.blank?
