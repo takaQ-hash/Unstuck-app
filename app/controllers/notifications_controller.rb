@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:send_push]
-  skip_before_action :authenticate_user!, only: [:send_push]
+  skip_before_action :verify_authenticity_token, only: [ :send_push ]
+  skip_before_action :authenticate_user!, only: [ :send_push ]
 
   def due_tasks
     tasks = current_user.tasks.select(&:notification_due?)
