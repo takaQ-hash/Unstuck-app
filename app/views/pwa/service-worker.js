@@ -1,9 +1,14 @@
 // Add a service worker for processing Web Push notifications:
 //
-// self.addEventListener("push", async (event) => {
-//   const { title, options } = await event.data.json()
-//   event.waitUntil(self.registration.showNotification(title, options))
-// })
+self.addEventListener("push", async (event) => {
+  const data = await event.data.json()
+  const title = data.title || "Unstuck"
+  const options = {
+    body: data.body || "",
+    icon: "/icon.png",
+  }
+  event.waitUntil(self.registration.showNotification(title, options))
+})
 //
 // self.addEventListener("notificationclick", function(event) {
 //   event.notification.close()

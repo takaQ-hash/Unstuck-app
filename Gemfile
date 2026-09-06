@@ -35,6 +35,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "rspec_junit_formatter"
   gem "letter_opener_web"
+  gem "web-push"
 end
 
 group :development do
