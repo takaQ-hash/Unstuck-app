@@ -48,19 +48,4 @@ class ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:status, :memo)
   end
-
-  def safe_back_path(url)
-    return nil if url.blank?
-
-    begin
-      uri = URI.parse(url)
-    rescue URI::InvalidURIError
-      return nil
-    end
-
-    # 相対パス、または自サイト内のURLのみ許可
-    return nil unless uri.host.nil? || uri.host == request.host
-
-    uri.path.presence
-  end
 end
