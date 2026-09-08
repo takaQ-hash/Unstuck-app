@@ -51,18 +51,4 @@ class TasksController < ApplicationController
   def task_params
      params.require(:task).permit(:name, :deadline, :notification_type, :notification_value)
   end
-
-  def safe_back_path(url)
-    return nil if url.blank?
-
-    begin
-      uri = URI.parse(url)
-    rescue URI::InvalidURIError
-      return nil
-    end
-
-    return nil unless uri.host.nil? || uri.host == request.host
-
-    uri.path.presence
-  end
 end
