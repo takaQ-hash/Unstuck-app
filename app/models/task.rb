@@ -33,25 +33,6 @@ class Task < ApplicationRecord
     end
   end
 
-  def send_push_notification
-    user.push_subscriptions.find_each do |subscription|
-      ::WebPush.payload_send(
-        message: { title: "Unstuck", body: "「#{name}」の報告時間です" }.to_json,
-        endpoint: subscription.endpoint,
-        p256dh: subscription.p256dh,
-        auth: subscription.auth,
-        vapid: {
-          subject: "mailto:example@example.com",
-          public_key: Rails.application.credentials.vapid[:public_key],
-          private_key: Rails.application.credentials.vapid[:private_key]
-        }
-      )
-    rescue ::WebPush::ExpiredSubscription
-      subscription.destroy
-    end
-    update!(last_notified_at: Time.current)
-  end
-
   private
 
   def notification_settings_changed?
